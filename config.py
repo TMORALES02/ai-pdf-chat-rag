@@ -1,0 +1,6 @@
+MODEL_NAME = "gpt-4.1-mini"
+
+CHUNK_SIZE = 500
+CHUNK_OVERLAP = 50
+
+TOP_K_RESULTS = 3
