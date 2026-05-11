@@ -1,26 +1,29 @@
-# AI PDF Chat
+# AI PDF Chat RAG
 
-AI PDF Chat es una aplicación web construida con Python, Streamlit y OpenAI que permite subir documentos PDF y hacer preguntas sobre su contenido utilizando inteligencia artificial.
+AI PDF Chat es una aplicación web desarrollada con Python, Streamlit y OpenAI que permite subir uno o múltiples archivos PDF y hacer preguntas sobre su contenido utilizando inteligencia artificial.
 
-La aplicación utiliza embeddings, búsqueda semántica y Retrieval-Augmented Generation (RAG) para responder preguntas de forma contextual.
-
----
-
-# Features
-
-- Subida de archivos PDF
-- Extracción automática de texto
-- División inteligente en chunks
-- Embeddings con OpenAI
-- Base vectorial FAISS
-- Búsqueda semántica
-- Chat interactivo estilo ChatGPT
-- Memoria conversacional
-- Respuestas contextuales usando IA
+La aplicación utiliza embeddings, búsqueda semántica y Retrieval-Augmented Generation (RAG) para responder preguntas de forma contextual y conversacional.
 
 ---
 
-# Tecnologías utilizadas
+# 🚀 Features
+
+- 📄 Subida de uno o múltiples PDFs
+- ✂️ Extracción automática de texto
+- 🧠 División inteligente en chunks
+- 🔎 Embeddings con OpenAI
+- 📚 Base vectorial FAISS
+- 💬 Chat interactivo estilo ChatGPT
+- 🧠 Memoria conversacional
+- ⚡ Respuestas contextuales usando RAG
+- 🧹 Botón para limpiar historial
+- 🛡️ Manejo de errores
+- 📏 Límite de tamaño para PDFs
+- 🌐 Deployment online con Streamlit Cloud
+
+---
+
+# 🛠️ Tecnologías utilizadas
 
 - Python
 - Streamlit
@@ -28,14 +31,21 @@ La aplicación utiliza embeddings, búsqueda semántica y Retrieval-Augmented Ge
 - LangChain
 - FAISS
 - PyPDF
+- RAG (Retrieval-Augmented Generation)
 
 ---
 
-# Screenshots
+# 📸 Screenshots
 
 ## Interfaz principal
 
 ![Interfaz principal](screenshots/app.png)
+
+---
+
+## Realizando preguntas
+
+![Preguntas](screenshots/question.png)
 
 ---
 
@@ -45,7 +55,7 @@ La aplicación utiliza embeddings, búsqueda semántica y Retrieval-Augmented Ge
 
 ---
 
-# Cómo ejecutar el proyecto
+# ⚙️ Cómo ejecutar el proyecto
 
 ## 1. Clonar repositorio
 
@@ -91,9 +101,9 @@ pip install -r requirements.txt
 
 ## 6. Configurar API Key
 
-Configurar variable de entorno:
+Crear un archivo `.env`:
 
-```bash
+```env
 OPENAI_API_KEY=tu_api_key
 ```
 
@@ -107,7 +117,28 @@ streamlit run app.py
 
 ---
 
-# Autor
+# 🌐 Demo Online
+
+https://ai-pdf-chat-rag.streamlit.app/
+
+---
+
+# 📚 Qué aprendí
+
+Durante este proyecto trabajé con:
+
+- Arquitectura RAG
+- Embeddings
+- Vector Databases
+- Semantic Search
+- Prompt Engineering
+- Streamlit
+- Manejo de estado conversacional
+- Deployment de aplicaciones IA
+
+---
+
+# 👨‍💻 Autor
 
 Tomás Morales
 
