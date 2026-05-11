@@ -9,6 +9,10 @@ from pdf_chat import (
 
 st.title("AI PDF Chat")
 
+if st.button("Limpiar chat"):
+    st.session_state.messages = []
+    st.rerun()
+
 
 # Inicializar memoria
 if "messages" not in st.session_state:
@@ -26,13 +30,31 @@ def construir_historial(messages):
 
 
 # Subir PDF
-pdf = st.file_uploader("Sube un archivo PDF", type="pdf")
+pdfs = st.file_uploader(
+    "Sube archivos PDF",
+    type="pdf",
+    accept_multiple_files=True
+)
+
+MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
+
+if pdfs:
+
+    for pdf in pdfs:
+
+        if pdf.size > MAX_FILE_SIZE:
+            st.error(
+                f"El archivo {pdf.name} supera el máximo permitido de 5 MB"
+            )
+            st.stop()
 
 
-if pdf:
+if pdfs:
 
     # Procesar PDF
-    texto = leer_pdf(pdf)
+    texto = ""
+    for pdf in pdfs:
+        texto += leer_pdf(pdf)
 
     chunks = crear_chunks(texto)
 
@@ -68,17 +90,24 @@ if pdf:
         )
 
         # Generar respuesta IA
-        respuesta, _ = generar_respuesta(
-            contexto,
-            pregunta,
-            chat_history
-        )
+        try:
+            with st.spinner("Generando respuesta"):
 
-        # Mostrar respuesta
-        with st.chat_message("assistant"):
-            st.write(respuesta)
+                respuesta, _ = generar_respuesta(
+                    contexto,
+                    pregunta,
+                    chat_history
+                )
 
-        # Guardar respuesta
-        st.session_state.messages.append(
-            {"role": "assistant", "content": respuesta}
-        )
+            # Mostrar respuesta
+            with st.chat_message("assistant"):
+                st.write(respuesta)
+
+            # Guardar respuesta
+            st.session_state.messages.append(
+                {"role": "assistant", "content": respuesta}
+            )
+        except Exception as e:
+        
+            st.error("Ocurrió un error al generar la respuesta.")
+            st.exception(e)
